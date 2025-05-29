@@ -1850,4 +1850,4 @@ const EduBreak = () => {
   );
 };
 
-export default EduBreak;import React, { useState, useEffect } from 'react';
+export default EduBreak;

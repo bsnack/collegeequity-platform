@@ -636,7 +636,24 @@ const EduBreak = () => {
   const progressPercentage = userMilestones.length > 0 ? (completedMilestones / userMilestones.length) * 100 : 0;
   
   // Modal Components
-  const LoginModal = () => (
+  const LoginModal = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const user = users[email];
+    if (user && user.password === password) {
+      setCurrentUser(user);
+      setShowLogin(false);
+      setEmail("");
+      setPassword("");
+    } else {
+      alert("Invalid credentials!");
+    }
+  };
+
+  return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <Card className="w-full max-w-md mx-4">
         <CardHeader>
@@ -648,23 +665,26 @@ const EduBreak = () => {
           </div>
           <CardDescription>Access your personalized education guidance</CardDescription>
         </CardHeader>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleSubmit}>
           <CardContent className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-1">Email</label>
-              <Input
-                type="email"
-                value={loginData.email}
-                onChange={(e) => setLoginData({...loginData, email: e.target.value})}
-                required
-              />
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your email"
+                    className="flex h-10 w-full rounded-md border border-gray-300 px-3 py-2"
+                    required
+                />
             </div>
             <div>
               <label className="block text-sm font-medium mb-1">Password</label>
               <Input
                 type="password"
-                value={loginData.password}
-                onChange={(e) => setLoginData({...loginData, password: e.target.value})}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
                 required
               />
             </div>
@@ -687,6 +707,7 @@ const EduBreak = () => {
       </Card>
     </div>
   );
+};
   
   const RegisterModal = () => (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">

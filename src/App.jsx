@@ -655,7 +655,7 @@ const EduBreak = () => {
               <Input
                 type="email"
                 value={loginData.email}
-                onChange={(e) => setLoginData(prev => ({...prev, email: e.target.value}))}
+                onChange={(e) => setLoginData({...loginData, email: e.target.value})}
                 required
               />
             </div>
@@ -664,7 +664,7 @@ const EduBreak = () => {
               <Input
                 type="password"
                 value={loginData.password}
-                onChange={(e) => setLoginData(prev => ({...prev, password: e.target.value}))}
+                onChange={(e) => setLoginData({...loginData, password: e.target.value})}
                 required
               />
             </div>
@@ -706,8 +706,7 @@ const EduBreak = () => {
               <label className="block text-sm font-medium mb-1">Full Name</label>
               <Input
                 value={registerData.name}
-                onChange={(e) => setRegisterData(prev => ({...prev, name: e.target.value}))}
-                required
+                onChange={(e) => setRegisterData({...registerData, name: e.target.value})}                required
               />
             </div>
             <div>
@@ -715,7 +714,7 @@ const EduBreak = () => {
               <Input
                 type="email"
                 value={registerData.email}
-                onChange={(e) => setRegisterData(prev => ({...prev, email: e.target.value}))}
+                onChange={(e) => setRegisterData({...registerData, email: e.target.value})}
                 required
               />
             </div>
@@ -724,7 +723,7 @@ const EduBreak = () => {
               <Input
                 type="password"
                 value={registerData.password}
-                onChange={(e) => setRegisterData(prev => ({...prev, password: e.target.value}))}
+                onChange={(e) => setRegisterData({...registerData, password: e.target.value})}
                 required
               />
             </div>
@@ -733,7 +732,7 @@ const EduBreak = () => {
               <Input
                 type="password"
                 value={registerData.confirmPassword}
-                onChange={(e) => setRegisterData(prev => ({...prev, confirmPassword: e.target.value}))}
+                onChange={(e) => setRegisterData({...registerData, confirmPassword: e.target.value})}
                 required
               />
             </div>
